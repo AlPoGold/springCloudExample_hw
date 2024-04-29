@@ -1,0 +1,20 @@
+
+server:
+  port: 8765
+
+
+spring:
+  application:
+    name: gateway
+cloud:
+  gateway:
+    routes:
+      - id: spring_client_user
+        uri: http://localhost:8081/
+        predicates:
+          - Path=/service1/**
+      - id: spring_web_task
+        uri: http://localhost:8082/
+        predicates:
+          - Path=/service2/**
+
